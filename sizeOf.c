@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    printf("int: %ld \n", sizeof(int));
+    printf("float: %ld \n", sizeof(float));
+    printf("double: %ld \n", sizeof(double));
+    printf("char: %ld \n", sizeof(char));
+    printf("size_t: %ld \n", sizeof(size_t));
+    printf("long: %ld \n", sizeof(long));
+
+    return 0;
+}
