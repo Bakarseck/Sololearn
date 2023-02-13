@@ -9,9 +9,9 @@ import (
 )
 
 type item struct {
-	Name  	string `json:"name"`
-	Price 	string `json:"price"`
-	ImgUrl 	string `json:"imgurl"`
+	Name   string `json:"name"`
+	Price  string `json:"price"`
+	ImgUrl string `json:"imgurl"`
 }
 
 func main() {
@@ -23,13 +23,13 @@ func main() {
 
 	c.OnHTML("div.col-sm-9 div[itemprop=itemListElement]", func(h *colly.HTMLElement) {
 		item := item{
-			Name: h.ChildText("h2.product-title"),
-			Price: h.ChildText("div.sale-price"),
+			Name:   h.ChildText("h2.product-title"),
+			Price:  h.ChildText("div.sale-price"),
 			ImgUrl: h.ChildAttr("img", "src"),
 		}
 
 		items = append(items, item)
-		
+
 	})
 
 	c.OnHTML("[title=Next]", func(h *colly.HTMLElement) {
@@ -48,6 +48,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
- 
+
 	os.WriteFile("products.json", content, 0644)
 }
